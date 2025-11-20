@@ -1,5 +1,6 @@
 package Estructura;
 
+import javax.swing.*;
 import java.util.PriorityQueue;
 import java.util.Comparator;
 import java.util.List;
@@ -13,14 +14,15 @@ public class ColaPrio extends Exception{
     }
 
     public void add( ) {
-        colaprio.add();
+        colaprio.add(new );
     }
 
-    public void pop() throws Exception{
-        if (.isEmpty()) {
-            throw new IllegalStateException("La cola de prioridad está vacía.");
+    public void pop() {
+        if (colaprio.isEmpty()) {
+            JOptionPane.showInputDialog("Cola vacia, no se puede eliminar");
+            return;
         }
-        return colaprio.poll();
+        colaprio.poll();
     }
 
 
