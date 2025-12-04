@@ -1,52 +1,33 @@
 package Negocio;
 
-public class Cultivo {
-    private int idCultivo;
+import Negocio.Parcela;
+import java.time.LocalDate;
+
+public class Cultivo implements  Comparable<Cultivo>{
+    private static int numeroCultivo;
+    private int IDcultivo;
     private String tipoCultivo;
-    private String fechaSiembra;
-    private String fechaCultivo;
+    private LocalDate fechaSiembra;
+    private LocalDate fechaCultivo;
 
-    public Cultivo(int idCultivo, String tipoCultivo, String fechaSiembra, String fechaCultivo) {
-        this.idCultivo = idCultivo;
+    public Cultivo(String tipoCultivo) {
+        this.IDcultivo = ++numeroCultivo;            //probar con el ++ de otro lado.
         this.tipoCultivo = tipoCultivo;
-        this.fechaSiembra = fechaSiembra;
-        this.fechaCultivo = fechaCultivo;
+        fechaSiembra = LocalDate.now();
+        fechaCultivo = LocalDate.now();             //reparar para que se ingrese
     }
 
-    public int getIdCultivo() {
-        return idCultivo;
-    }
-    public void setIdCultivo(int idCultivo) {
-        this.idCultivo = idCultivo;
-    }
-
-    public String getTipoCultivo() {
-        return tipoCultivo;
-    }
-    public void setTipoCultivo(String tipoCultivo) {
-        this.tipoCultivo = tipoCultivo;
-    }
-
-    public String getFechaSiembra() {
-        return fechaSiembra;
-    }
-    public void setFechaSiembra(String fechaSiembra) {
-        this.fechaSiembra = fechaSiembra;
-    }
-
-    public String getFechaCultivo() {
-        return fechaCultivo;
-    }
-    public void setFechaCultivo(String fechaCultivo) {
-        this.fechaCultivo = fechaCultivo;
-    }
 
     @Override
     public String toString() {
-        return "Cultivo " +
-                "idCultivo= "       + idCultivo     + "\n" +
-                "tipoCultivo= "     + tipoCultivo   + "\n" +
-                "fechaSiembra= "    + fechaSiembra  + "\n" +
-                "fechaCultivo= "    + fechaCultivo;
+        return "  Cultivos "             + IDcultivo  +
+                "\nTipo Cultivo: "      + tipoCultivo    +
+                "\nFecha Siembra: "     + fechaSiembra   +
+                "\nFecha Cosecha: "     + fechaCultivo   +
+                "\n\n";
+    }
+
+    public int compareTo(Cultivo c) {
+        return Integer.compare(this.numeroCultivo , c.numeroCultivo);
     }
 }
